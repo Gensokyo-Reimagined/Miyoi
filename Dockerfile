@@ -17,11 +17,6 @@ ENV\
 
 WORKDIR /opt/minecraft
 
-# Install YourKit Java Profiler agents
-RUN wget https://www.yourkit.com/download/docker/YourKit-JavaProfiler-2023.9-docker.zip -P /tmp/ && \
-    unzip /tmp/YourKit-JavaProfiler-2023.9-docker.zip -d /usr/local && \
-    rm /tmp/YourKit-JavaProfiler-2023.9-docker.zip
-
     # Install keepup
 RUN wget -nv -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-${KEEPUP_VERSION}.zip  \
     # unzip file inside hocon-to-json.zip into /usr/local \
