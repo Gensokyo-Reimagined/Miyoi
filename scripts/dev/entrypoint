@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+# TODO: write these once set up
+# . /scripts/dev/ansible
+# . /scripts/dev/keepup
+
+if [ "$UPDATE_DATA_OWNER" = "true" ]; then
+  echo "Updating owner for /data to $UID:$GID"
+  chown $UID:$GID -R /data
+fi
+
+exec /start
