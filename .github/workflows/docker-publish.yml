@@ -43,7 +43,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/gensokyoreimagined/${{ matrix.image }}
+          images: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}
 
       - name: Build and push ${{ matrix.image }}
         uses: docker/build-push-action@v3
