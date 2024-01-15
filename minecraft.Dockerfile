@@ -26,7 +26,7 @@ RUN wget -nv -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/downlo
     && rm -rf keepup.zip keepup-${KEEPUP_VERSION}
 
 # Copy over scripts
-COPY ./scripts/dev /scripts/dev
+COPY scripts/dev /scripts/dev
 RUN chmod +x /scripts/dev/*
 
 WORKDIR $HOME
