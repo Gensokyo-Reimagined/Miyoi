@@ -19,7 +19,7 @@ jobs:
       matrix:
         include:
           - image: minecraft
-            dockerfile: Dockerfile
+            dockerfile: minecraft.Dockerfile
             platforms: linux/amd64,linux/arm64
           - image: proxy
             dockerfile: proxy.Dockerfile
