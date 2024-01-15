@@ -5,7 +5,7 @@ if [ "$ANSIBLE" = "true" ]; then
   if [ "$ANSIBLE_PULL" = "true" ]; then
     echo "Pulling and running latest server config ansible playbook"
 
-    ansible-pull -U "git@github.com:Gensokyo-Reimagined/gensou-config.git" -d "/gensou-config" --checkout "${ANSIBLE_PULL_BRANCH:=master}"
+    ansible-pull -U "${GITHUB_TOKEN}@github.com/Gensokyo-Reimagined/gensou-config.git" -d "/gensou-config" --checkout "${ANSIBLE_PULL_BRANCH:=master}"
   elif [ -f "/server-config/local.yml" ]; then
     echo "Running local server config ansible playbook"
 
