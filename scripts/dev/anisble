@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+if [ "$ANSIBLE" = "true" ]; then
+  if [ "$ANSIBLE_PULL" = "true" ]; then
+    echo "Pulling and running latest server config ansible playbook"
+
+    ansible-pull -U "https://github.com/Gensokyo-Reimagined/gensou-config.git" -d "/gensou-config" --checkout "${ANSIBLE_PULL_BRANCH:=master}"
+  elif [ -f "/server-config/local.yml" ]; then
+    echo "Running local server config ansible playbook"
+
+    ansible-playbook /gensou-config/local.yml --extra-vars "server_name=$SERVER_NAME dest=/data"
+  fi
+else
+  echo "ANSIBLE not set to 'true', not running playbook"
+fi

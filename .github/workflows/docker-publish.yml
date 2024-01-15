@@ -21,6 +21,9 @@ jobs:
           - image: minecraft
             dockerfile: Dockerfile
             platforms: linux/amd64,linux/arm64
+          - image: proxy
+            dockerfile: proxy.Dockerfile
+            platforms: linux/amd64
     steps:
       - uses: actions/checkout@v3
 
