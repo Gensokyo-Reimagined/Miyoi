@@ -18,7 +18,7 @@ ENV\
 WORKDIR /opt/minecraft
 
     # Install keepup
-RUN wget -nv -O keepup.zip https://github.com/Gensokyo-Reimagined/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-${KEEPUP_VERSION}.zip  \
+RUN wget -nv -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-${KEEPUP_VERSION}.zip  \
     # unzip file inside hocon-to-json.zip into /usr/local \
     && unzip -q keepup.zip \
     && rclone copy keepup-${KEEPUP_VERSION}/ /usr/local \
