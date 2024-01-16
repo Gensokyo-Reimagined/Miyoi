@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.version="v0.0.1"
 
 RUN apk add --no-cache ansible rclone wget unzip jq
 
-ARG KEEPUP_VERSION=1.2.2
+ARG KEEPUP_VERSION=1.2.3
 
 ENV\
     KEEPUP=true\
