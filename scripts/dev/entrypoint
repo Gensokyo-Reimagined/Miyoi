@@ -4,6 +4,7 @@ set -e
 
 . /scripts/dev/ansible
 . /scripts/dev/keepup
+. /scripts/dev/ignite
 
 if [ "$UPDATE_DATA_OWNER" = "true" ]; then
   echo "Updating owner for /data to $UID:$GID"

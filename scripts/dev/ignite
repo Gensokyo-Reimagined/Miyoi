@@ -1,0 +1,65 @@
+#!/bin/bash
+set -euo pipefail
+
+# Pretty much all copied from docker-minecraft-server in "start-deployPurpur" since we use a custom target to Ignite
+
+if [ "$USE_IGNITE_LOADER" = "true" ]; then
+    echo "Setting up Ignite loader, forcing Purpur server"
+  
+    IFS=$'\n\t'
+
+    : "${PURPUR_BUILD:=LATEST}"
+    : "${PURPUR_DOWNLOAD_URL:=}"
+
+    # shellcheck source=start-utils
+    . "${SCRIPTS:-/}start-utils"
+    isDebugging && set -x
+
+    resultsFile=/data/.purpur.env
+
+    if [[ $PURPUR_DOWNLOAD_URL ]]; then
+    if ! mc-image-helper install-purpur \
+        --output-directory=/data \
+        --results-file="$resultsFile" \
+        --url="$PURPUR_DOWNLOAD_URL}"; then
+        log "ERROR: failed to download from custom Purpur URL"
+        exit 1
+    fi
+    # grab SERVER and export it
+    set -a
+    # shellcheck disable=SC1090
+    source "${resultsFile}"
+    set +a
+
+    else
+    args=(
+        --output-directory=/data
+        --results-file="$resultsFile"
+        --version="$VERSION"
+    )
+    if [[ $PURPUR_BUILD ]]; then
+        args+=(--build="$PURPUR_BUILD")
+    fi
+    if ! mc-image-helper install-purpur "${args[@]}"; then
+        log "ERROR: failed to download Purpur"
+        exit 1
+    fi
+    # grab SERVER and export it
+    set -a
+    # shellcheck disable=SC1090
+    source "${resultsFile}"
+    set +a
+    fi
+
+    if isTrue "$USE_IGNITE_LOADER"; then
+    downloadUrl="https://github.com/vectrix-space/ignite/releases/latest/download/ignite.jar"
+
+    if ! IGNITE_JAR=$(get --output-filename --skip-up-to-date --output /data "$downloadUrl"); then
+        log "ERROR: failed to download Ignite loader jar from $downloadUrl"
+        exit 1
+    fi
+    fi
+
+    # Normalize on Spigot for later operations
+    export FAMILY=SPIGOT
+fi

@@ -14,7 +14,8 @@ ENV\
     ANSIBLE_PULL_BRANCH=master\
     UPDATE_DATA_OWNER=true\
     SERVER_NAME=dev\
-    HOME=/data
+    HOME=/data\
+    USE_IGNITE_LOADER=true
 
 WORKDIR /opt/minecraft
 
@@ -25,9 +26,6 @@ RUN wget -nv -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/downlo
     && rclone copy keepup-${KEEPUP_VERSION}/ /usr/local \
     && chmod +x /usr/local/bin/keepup \
     && rm -rf keepup.zip keepup-${KEEPUP_VERSION}
-
-# Download Ignite loader
-RUN wget -nv -O /data/ignite.jar https://github.com/vectrix-space/ignite/releases/latest/download/ignite.jar
 
 # Copy over scripts
 COPY scripts/dev /scripts/dev
