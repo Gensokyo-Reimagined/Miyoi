@@ -53,4 +53,7 @@ if [ "$USE_IGNITE_LOADER" = "true" ]; then
 
     # Normalize on Spigot for later operations
     export FAMILY=SPIGOT
+
+    export JVM_OPTS="-Dignite.locator=paper -Dignite.paper.jar=${SERVER} -Dignite.paper.target=io.papermc.paperclip.Paperclip -Dignite.paper.version=${VERSION} ${JVM_OPTS}"
+    export TYPE="CUSTOM"
 fi
