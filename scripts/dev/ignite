@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Pretty much all copied from docker-minecraft-server in "start-deployPurpur" since we use a custom target to Ignite
 
-if [ "$USE_IGNITE_LOADER" -eq "true" ]; then
+if [[ "$USE_IGNITE_LOADER" -eq "true" ]]; then
     echo "Setting up Ignite loader, forcing Purpur server"
   
     IFS=$'\n\t'
