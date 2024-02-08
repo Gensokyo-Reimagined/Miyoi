@@ -15,7 +15,7 @@ ENV\
     ANSIBLE=true\
     ANSIBLE_PULL=true\
     ANSIBLE_PULL_BRANCH=master\
-    UPDATE_DATA_OWNER=true\
+    UPDATE_DATA_OWNER=false\
     SERVER_NAME=dev\
     HOME=/server
 
