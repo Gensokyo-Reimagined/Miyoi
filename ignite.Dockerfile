@@ -1,8 +1,8 @@
-FROM itzg/minecraft-server:java17-alpine
+FROM itzg/minecraft-server:java21-graalvm
 LABEL org.opencontainers.image.authors="DoggySazHi <reimu@williamle.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
 
-RUN apk add --no-cache ansible rclone wget unzip jq
+RUN yum install ansible rclone wget unzip jq
 
 ARG KEEPUP_VERSION=1.2.3
 
