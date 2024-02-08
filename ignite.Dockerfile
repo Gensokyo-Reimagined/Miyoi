@@ -2,17 +2,12 @@ FROM itzg/minecraft-server:java21-graalvm
 LABEL org.opencontainers.image.authors="DoggySazHi <reimu@williamle.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
 
-# Uncomment the en_US.UTF-8 line in /etc/locale.gen
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen
-# locale-gen generates locales for all uncommented locales in /etc/locale.gen
-RUN locale-gen
-
+RUN export LANG=en_US.UTF-8
 RUN dnf install ansible rclone wget unzip jq -y
 
 ARG KEEPUP_VERSION=1.2.3
 
 ENV\
-    LANG=en_US.UTF-8\
     KEEPUP=true\
     KEEPUP_ALLOW_OVERRIDES=true\
     ANSIBLE=true\
