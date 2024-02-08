@@ -2,8 +2,9 @@ FROM itzg/minecraft-server:java21-graalvm
 LABEL org.opencontainers.image.authors="DoggySazHi <reimu@williamle.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
 
-RUN export LANG=en_US.UTF-8
-RUN dnf install ansible rclone wget unzip jq -y
+RUN dnf install ansible rclone wget unzip jq -y \
+    && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+    && locale-gen en_US.UTF-8
 
 ARG KEEPUP_VERSION=1.2.3
 
