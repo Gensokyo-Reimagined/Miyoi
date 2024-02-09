@@ -1,6 +1,6 @@
 FROM itzg/minecraft-server:java21-graalvm
 LABEL org.opencontainers.image.authors="DoggySazHi <reimu@williamle.com>"
-LABEL org.opencontainers.image.version="v0.0.1"
+LABEL org.opencontainers.image.version="v0.0.2"
 
 RUN dnf reinstall glibc-common -yq
 RUN dnf install glibc-langpack-en glibc-locale-source rclone wget unzip jq python3-pip -yq
@@ -23,7 +23,11 @@ ENV PATH="/root/.local/bin:${PATH}"
 # RUN ansible-galaxy collection install community.general
 # RUN ansible-galaxy collection install ansible.posix
 
+# Clean up build dependencies
+
 RUN dnf remove cmake gcc make clang openssl-devel python3-devel -yq
+
+# Set locale
 
 RUN localedef -c -i en_US -f UTF-8 en_US.UTF-8
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -56,6 +60,7 @@ RUN wget -nv -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/downlo
 # Copy over scripts
 COPY scripts/dev /scripts/dev
 RUN chmod +x /scripts/dev/*
+RUN dos2unix /scripts/dev/*
 
 WORKDIR /data
 
