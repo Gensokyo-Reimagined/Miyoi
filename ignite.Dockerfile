@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.version="v0.0.1"
 
 ENV LANG='en_US.UTF-8'
 
-RUN dnf install ansible glibc-langpack-en rclone wget unzip jq -y \
+RUN dnf install ansible glibc-langpack-en glibc-locale-source rclone wget unzip jq -y \
     && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && localedef -v -c -i en_US -f UTF-8 en_US.UTF-8
 
