@@ -4,6 +4,7 @@ LABEL org.opencontainers.image.version="v0.0.1"
 
 RUN dnf reinstall glibc-common -yq
 RUN dnf install glibc-langpack-en glibc-locale-source rclone wget unzip jq ansible ansible-collection-community-general -yq
+RUN ansible-galaxy collection install ansible.posix
 
 RUN localedef -c -i en_US -f UTF-8 en_US.UTF-8
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
