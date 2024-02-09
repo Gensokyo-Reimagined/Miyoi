@@ -6,7 +6,7 @@ ENV LANG='en_US.UTF-8'
 
 RUN dnf install ansible glibc-langpack-en glibc-locale-source rclone wget unzip jq -y
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-RUN localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 --quiet
+RUN localedef -c -i en_US -f UTF-8 en_US.UTF-8 --quiet
 
 ARG KEEPUP_VERSION=1.2.3
 
