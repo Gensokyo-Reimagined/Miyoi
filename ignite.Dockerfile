@@ -59,4 +59,4 @@ RUN chmod +x /scripts/dev/*
 
 WORKDIR /data
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/scripts/dev/entrypoint"]
