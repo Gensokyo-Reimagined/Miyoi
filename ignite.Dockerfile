@@ -2,11 +2,13 @@ FROM itzg/minecraft-server:java21-graalvm
 LABEL org.opencontainers.image.authors="DoggySazHi <reimu@williamle.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
 
-ENV LANG='en_US.UTF-8'
+RUN dnf reinstall glibc-common -yq
+RUN dnf install ansible glibc-langpack-en glibc-locale-source rclone wget unzip jq -yq
 
-RUN dnf install ansible glibc-langpack-en glibc-locale-source rclone wget unzip jq -y
+RUN localedef -c -i en_US -f UTF-8 en_US.UTF-8
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-RUN localedef -c -i en_US -f UTF-8 en_US.UTF-8 --quiet
+RUN echo "LANG=en_US.UTF-8" > /etc/locale.conf
+ENV LANG en_US.UTF-8
 
 ARG KEEPUP_VERSION=1.2.3
 
