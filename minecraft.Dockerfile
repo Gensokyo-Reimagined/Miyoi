@@ -2,7 +2,7 @@ FROM itzg/minecraft-server:java21-graalvm
 LABEL org.opencontainers.image.authors="yumio <csaila@live.com>; DoggySazHi <reimu@williamle.com>"
 LABEL org.opencontainers.image.version="v0.0.2"
 
-RUN dnf reinstalzl glibc-common -yq
+RUN dnf reinstall glibc-common -yq
 RUN dnf install glibc-langpack-en glibc-locale-source rclone wget unzip jq python3-pip -yq
 # ansible ansible-collection-community-general ansible-collection-ansible-posix might be out of date? Use pip
 # CHAT WE'RE INSTALLING RUST??
