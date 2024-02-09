@@ -1,10 +1,10 @@
 #!/bin/sh
 set -e
 
-keepupDir=$HOME/keepupDir
+keepupDir=/data/keepupDir
 keepupDownloadsDir=$keepupDir/downloads
 keepupOverridesFile=$keepupDir/overrides.conf
-pluginsDir=$HOME/plugins
+pluginsDir=/data/plugins
 pluginVersionsFile=/gensou-config/servers/plugin-versions.conf
 
 mkdir -p "$keepupDir"
