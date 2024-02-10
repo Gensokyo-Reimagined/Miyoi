@@ -44,7 +44,7 @@ ENV\
     ANSIBLE_PULL_BRANCH=main\
     UPDATE_DATA_OWNER=true\
     SERVER_NAME=dev\
-    # HOME=/data\ breaks things
+    ANSIBLE_HOME=/data\
     USE_IGNITE_LOADER=true
 
 WORKDIR /opt/minecraft
