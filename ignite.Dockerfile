@@ -62,6 +62,10 @@ COPY scripts/dev /scripts/dev
 RUN chmod +x /scripts/dev/*
 RUN dos2unix /scripts/dev/*
 
+# Symlink for rclone after Ansible
+RUN mkdir -p ~/.config/rclone
+RUN ln -s /data/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf
+
 WORKDIR /data
 
 ENTRYPOINT ["/scripts/dev/entrypoint"]
