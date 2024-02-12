@@ -27,11 +27,11 @@ if [ "$KEEPUP" = "true" ]; then
 
     echo "Running keepup with overrides"
     cat $pluginVersionsFile $keepupOverridesFile 2>/dev/null\
-      | keepup - $keepupDownloadsDir $pluginsDir --json-path=gensokyoreimagined.servers.${SERVER_NAME}
+      | keepup - $keepupDownloadsDir $pluginsDir --json-path=gensokyoreimagined.servers.${SERVER_NAME} --hide-progress-bar
   else
     echo "Running keepup without overrides"
     keepup $pluginVersionsFile\
-      $keepupDownloadsDir $pluginsDir --json-path=gensokyoreimagined.servers.${SERVER_NAME}
+      $keepupDownloadsDir $pluginsDir --json-path=gensokyoreimagined.servers.${SERVER_NAME} --hide-progress-bar
   fi
 else
   echo "KEEPUP is not set to 'true', not running keepup"

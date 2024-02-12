@@ -34,7 +34,7 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 RUN echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ENV LANG en_US.UTF-8
 
-ARG KEEPUP_VERSION=2.0.0-beta.1
+ARG KEEPUP_VERSION=2.0.0-beta.2
 
 ENV\
     KEEPUP=true\

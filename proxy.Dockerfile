@@ -7,7 +7,7 @@ RUN apt-get update -y \
 
 RUN PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install --include-deps ansible
 
-ARG KEEPUP_VERSION=2.0.0-beta.1
+ARG KEEPUP_VERSION=2.0.0-beta.2
 
 ENV\
     KEEPUP=true\
