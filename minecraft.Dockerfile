@@ -34,7 +34,7 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 RUN echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ENV LANG en_US.UTF-8
 
-ARG KEEPUP_VERSION=1.2.3
+ARG KEEPUP_VERSION=2.0.0-beta.1
 
 ENV\
     KEEPUP=true\
@@ -49,12 +49,12 @@ ENV\
 WORKDIR /opt/minecraft
 
 # Install keepup
-RUN wget -nv -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-${KEEPUP_VERSION}.zip  \
+RUN wget -nv -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-shadow-${KEEPUP_VERSION}.zip  \
     # unzip file inside hocon-to-json.zip into /usr/local \
     && unzip -q keepup.zip \
-    && rclone copy keepup-${KEEPUP_VERSION}/ /usr/local \
+    && rclone copy keepup-shadow-${KEEPUP_VERSION}/ /usr/local \
     && chmod +x /usr/local/bin/keepup \
-    && rm -rf keepup.zip keepup-${KEEPUP_VERSION}
+    && rm -rf keepup.zip keepup-shadow-${KEEPUP_VERSION}
 
 # Copy over scripts
 COPY scripts/dev /scripts/dev
