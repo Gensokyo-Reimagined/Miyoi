@@ -27,6 +27,9 @@ jobs:
           - image: ignite
             dockerfile: ignite.Dockerfile
             platforms: linux/amd64
+          - image: momoyo
+            dockerfile: momoyo.Dockerfile
+            platforms: linux/amd64
     steps:
       - uses: actions/checkout@v3
 
