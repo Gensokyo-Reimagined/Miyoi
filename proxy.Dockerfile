@@ -24,7 +24,7 @@ ENV\
     ANSIBLE_PULL_BRANCH=master\
     UPDATE_DATA_OWNER=false\
     SERVER_NAME=dev\
-    HOME=/server\
+    ANSIBLE_HOME=/server\
     ANSIBLE_CONFIG=/server-config/ansible.cfg
 
 WORKDIR /opt/minecraft
