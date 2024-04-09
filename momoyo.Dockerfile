@@ -1,4 +1,4 @@
-FROM itzg/minecraft-server:java21-alpine
+FROM itzg/minecraft-server:java17-alpine
 LABEL org.opencontainers.image.authors="yumio <csaila@live.com>"
 LABEL org.opencontainers.image.version="v1.2"
 
