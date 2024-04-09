@@ -7,7 +7,7 @@ RUN apk add --no-cache ansible-core rclone wget unzip jq openssh
 ARG KEEPUP_VERSION=2.0.1
 
 ENV\
-    KEEPUP=true\
+    KEEPUP=false\
     KEEPUP_ALLOW_OVERRIDES=true\
     ANSIBLE=true\
     ANSIBLE_PULL=true\
