@@ -5,7 +5,8 @@ keepupDir=/data/keepupDir
 keepupDownloadsDir=$keepupDir/downloads
 keepupOverridesFile=$keepupDir/overrides.conf
 pluginsDir=/data/plugins
-pluginVersionsFile=/gensou-config/servers/plugin-versions.conf
+configSource=/server-config/
+pluginVersionsFile=/gensou-config/servers/keepup/plugin-versions.conf
 
 mkdir -p "$keepupDir"
 mkdir -p "$keepupDownloadsDir"
@@ -14,25 +15,12 @@ mkdir -p "$pluginsDir"
 if [ "$KEEPUP" = "true" ]; then
   echo "Keepup enabled"
 
-  if  [ "$KEEPUP_ALLOW_OVERRIDES" = "true" ]; then
-    if [ ! -f "$keepupOverridesFile" ]; then
-      echo "Creating default keepup overrides file"
-      touch "$keepupOverridesFile"
-    fi
-
-    if [ ! -f "$pluginVersionsFile" ]; then
-          echo "Plugin versions file not found at $pluginVersionsFile, skipping keepup"
-          return
-    fi
-
-    echo "Running keepup with overrides"
-    cat $pluginVersionsFile $keepupOverridesFile 2>/dev/null\
-      | keepup - $keepupDownloadsDir $pluginsDir --json-path=gensokyoreimagined.servers.${SERVER_NAME} --hide-progress-bar
-  else
-    echo "Running keepup without overrides"
-    keepup $pluginVersionsFile\
-      $keepupDownloadsDir $pluginsDir --json-path=gensokyoreimagined.servers.${SERVER_NAME} --hide-progress-bar
+  if [ -z "$KEEPUP_JSON_PATH" ]; then
+    export KEEPUP_JSON_PATH=gensokyoreimagined.servers.${SERVER_NAME}
   fi
+
+  keepup plugins $pluginVersionsFile $keepupDownloadsDir $pluginsDir --hide-progress-bar \
+    config --source $configSource --dest $HOME --inventory $keepupDir/keepup-configs.yml --template-cache $keepupDir/templates ${SERVER_NAME}
 else
   echo "KEEPUP is not set to 'true', not running keepup"
 fi

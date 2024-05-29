@@ -19,17 +19,19 @@ jobs:
       matrix:
         include:
           - image: minecraft
-            dockerfile: minecraft.Dockerfile
+            dockerfile: Dockerfile
+            target: minecraft
             platforms: linux/amd64,linux/arm64
           - image: proxy
-            dockerfile: proxy.Dockerfile
+            dockerfile: Dockerfile
+            target: proxy
             platforms: linux/amd64
-          - image: ignite
-            dockerfile: ignite.Dockerfile
-            platforms: linux/amd64
-          - image: momoyo
-            dockerfile: momoyo.Dockerfile
-            platforms: linux/amd64
+#          - image: ignite
+#            dockerfile: ignite.Dockerfile
+#            platforms: linux/amd64
+#          - image: momoyo
+#            dockerfile: momoyo.Dockerfile
+#            platforms: linux/amd64
     steps:
       - uses: actions/checkout@v3
 
@@ -60,5 +62,6 @@ jobs:
           file: ${{ matrix.dockerfile }}
           platforms: ${{ matrix.platforms }}
           push: true
+          target: ${{ matrix.target }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
