@@ -53,8 +53,6 @@ ENV\
     SERVER_NAME=dev\
     ANSIBLE_HOME=/data
 
-WORKDIR /opt/minecraft
-
 # Copy over scripts
 COPY scripts/dev /scripts/dev
 RUN chmod +x /scripts/dev/*
