@@ -41,8 +41,6 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 RUN echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ENV LANG en_US.UTF-8
 
-ARG KEEPUP_VERSION=2.0.0-beta.2\
-
 COPY --from=helper /keepup /usr/local
 
 ENV\
@@ -78,8 +76,6 @@ RUN apt-get update -y \
  && apt-get install -y rsync rclone wget unzip git pipx python3-venv jq
 
 RUN PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install --include-deps ansible
-
-ARG KEEPUP_VERSION=2.0.0-beta.2
 
 COPY --from=helper /keepup /usr/local
 
