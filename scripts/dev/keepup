@@ -20,7 +20,7 @@ if [ "$KEEPUP" = "true" ]; then
   fi
 
   keepup plugins $pluginVersionsFile $keepupDownloadsDir $pluginsDir --hide-progress-bar \
-    config --source $configSource --dest $HOME --inventory $keepupDir/keepup-configs.yml --template-cache $keepupDir/templates ${SERVER_NAME}
+    config --source $configSource --dest /data --inventory $keepupDir/keepup-configs.yml --template-cache $keepupDir/templates ${SERVER_NAME}
 else
   echo "KEEPUP is not set to 'true', not running keepup"
 fi
