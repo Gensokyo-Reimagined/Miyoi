@@ -54,6 +54,7 @@ ENV\
     UPDATE_DATA_OWNER=true\
     SERVER_NAME=dev\
     ANSIBLE_HOME=/data
+    HOME=/server
 
 WORKDIR /opt/minecraft
 
