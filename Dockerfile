@@ -85,7 +85,7 @@ ENV\
     ANSIBLE_PULL_BRANCH=master\
     UPDATE_DATA_OWNER=true\
     SERVER_NAME=dev\
-    ANSIBLE_HOME=/data
+    ANSIBLE_HOME=/server
 
 # Copy over scripts
 COPY scripts/dev /scripts/dev
