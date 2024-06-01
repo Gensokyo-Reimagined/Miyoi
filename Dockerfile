@@ -83,7 +83,7 @@ ENV\
     ANSIBLE=true\
     ANSIBLE_PULL=true\
     ANSIBLE_PULL_BRANCH=master\
-    UPDATE_DATA_OWNER=false\
+    UPDATE_DATA_OWNER=true\
     SERVER_NAME=dev\
     ANSIBLE_HOME=/data
 
