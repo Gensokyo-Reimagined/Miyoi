@@ -72,7 +72,7 @@ LABEL org.opencontainers.image.version="v0.0.1"
 
 RUN apt-get update -y \
  && apt-get install -y rsync rclone wget unzip git pipx python3-venv jq
-
+Dockerfile
 RUN PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install --include-deps ansible
 
 COPY --from=helper /keepup /usr/local
@@ -85,13 +85,13 @@ ENV\
     ANSIBLE_PULL_BRANCH=master\
     UPDATE_DATA_OWNER=true\
     SERVER_NAME=dev\
-    ANSIBLE_HOME=/server
+    ANSIBLE_HOME=/data
 
 # Copy over scripts
 COPY scripts/dev /scripts/dev
 RUN chmod +x /scripts/dev/*
 
-WORKDIR /server
+WORKDIR /data
 
 RUN cp /usr/bin/run-bungeecord.sh /start
 ENTRYPOINT ["/scripts/dev/entrypoint"]
