@@ -91,7 +91,7 @@ ENV\
 COPY scripts/dev /scripts/dev
 RUN chmod +x /scripts/dev/*
 
-WORKDIR /data
+WORKDIR /server
 
 RUN cp /usr/bin/run-bungeecord.sh /start
 ENTRYPOINT ["/scripts/dev/entrypoint"]
