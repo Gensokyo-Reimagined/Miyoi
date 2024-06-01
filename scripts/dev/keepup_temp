@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+keepupDir=/server/keepupDir
+keepupDownloadsDir=$keepupDir/downloads
+keepupOverridesFile=$keepupDir/overrides.conf
+pluginsDir=/data/plugins
+configSource=/server-config/
+pluginVersionsFile=/gensou-config/keepup/plugin-versions.conf
+
+mkdir -p "$keepupDir"
+mkdir -p "$keepupDownloadsDir"
+mkdir -p "$pluginsDir"
+
+if [ "$KEEPUP" = "true" ]; then
+  echo "Keepup enabled"
+
+  if [ -z "$KEEPUP_JSON_PATH" ]; then
+    export KEEPUP_JSON_PATH=gensokyoreimagined.servers.${SERVER_NAME}
+  fi
+
+  keepup plugins $pluginVersionsFile $keepupDownloadsDir $pluginsDir --hide-progress-bar \
+    config --source $configSource --dest /data --inventory $keepupDir/keepup-configs.yml --template-cache $keepupDir/templates ${SERVER_NAME}
+else
+  echo "KEEPUP is not set to 'true', not running keepup"
+fi
