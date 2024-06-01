@@ -93,7 +93,7 @@ WORKDIR /opt/minecraft
 COPY scripts/dev /scripts/dev
 RUN chmod +x /scripts/dev/*
 
-WORKDIR $HOME
+WORKDIR /data
 
 RUN cp /usr/bin/run-bungeecord.sh /start
 ENTRYPOINT ["/scripts/dev/entrypoint"]
