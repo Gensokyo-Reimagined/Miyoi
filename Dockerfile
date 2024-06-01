@@ -85,7 +85,7 @@ ENV\
     ANSIBLE_PULL_BRANCH=master\
     UPDATE_DATA_OWNER=false\
     SERVER_NAME=dev\
-    HOME=/server
+    ANSIBLE_HOME=/data
 
 WORKDIR /opt/minecraft
 
