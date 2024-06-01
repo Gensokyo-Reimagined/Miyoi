@@ -94,4 +94,4 @@ RUN chmod +x /scripts/dev/*
 WORKDIR /server
 
 RUN cp /usr/bin/run-bungeecord.sh /start
-ENTRYPOINT ["/scripts/dev/entrypoint"]
+ENTRYPOINT ["/scripts/dev/workaround"]
