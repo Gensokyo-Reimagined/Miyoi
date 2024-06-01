@@ -72,7 +72,7 @@ LABEL org.opencontainers.image.version="v0.0.1"
 
 RUN apt-get update -y \
  && apt-get install -y rsync rclone wget unzip git pipx python3-venv jq
-Dockerfile
+
 RUN PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install --include-deps ansible
 
 COPY --from=helper /keepup /usr/local
