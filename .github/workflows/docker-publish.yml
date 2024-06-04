@@ -26,12 +26,10 @@ jobs:
             dockerfile: Dockerfile
             target: proxy
             platforms: linux/amd64
-#          - image: ignite
-#            dockerfile: ignite.Dockerfile
-#            platforms: linux/amd64
-#          - image: momoyo
-#            dockerfile: momoyo.Dockerfile
-#            platforms: linux/amd64
+          - image: momoyo
+            dockerfile: Dockerfile
+            target: momoyo
+            platforms: linux/amd64,linux/arm64
     steps:
       - uses: actions/checkout@v3
 
