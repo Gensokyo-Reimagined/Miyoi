@@ -1,11 +1,11 @@
-FROM alpine as helper
+FROM alpine AS helper
 ARG KEEPUP_VERSION='3.0.0-alpha.3'
 RUN wget -nv -q -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-shadow-${KEEPUP_VERSION}.zip  \
     # unzip file inside hocon-to-json.zip into /usr/local \
     && unzip -q keepup.zip \
     && mv keepup-shadow-${KEEPUP_VERSION}/ keepup
 
-FROM itzg/minecraft-server:java21-graalvm as minecraft
+FROM itzg/minecraft-server:java21-graalvm AS minecraft
 LABEL org.opencontainers.image.authors="yumio <csaila@live.com>; DoggySazHi <reimu@williamle.com>"
 LABEL org.opencontainers.image.version="v0.0.2"
 
@@ -66,7 +66,7 @@ WORKDIR /data
 
 ENTRYPOINT ["/scripts/dev/entrypoint"]
 
-FROM itzg/bungeecord as proxy
+FROM itzg/bungeecord AS proxy
 LABEL org.opencontainers.image.authors="yumio <csaila@live.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
 
@@ -96,7 +96,7 @@ WORKDIR /server
 RUN cp /usr/bin/run-bungeecord.sh /start
 ENTRYPOINT ["/scripts/dev/workaround"]
 
-FROM itzg/minecraft-server:java21-graalvm as momoyo
+FROM itzg/minecraft-server:java21-graalvm AS momoyo
 LABEL org.opencontainers.image.authors="yumio <csaila@live.com>"
 LABEL org.opencontainers.image.version="v1.0.0"
 
