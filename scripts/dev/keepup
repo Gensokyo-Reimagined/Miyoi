@@ -6,7 +6,7 @@ keepupDownloadsDir=$keepupDir/downloads
 keepupOverridesFile=$keepupDir/overrides.conf
 pluginsDir=/data/plugins
 configSource=/server-config/
-pluginVersionsFile=/gensou-config/keepup/plugin-versions.conf
+pluginVersionsFile=/server-config/keepup/plugin-versions.conf
 
 mkdir -p "$keepupDir"
 mkdir -p "$keepupDownloadsDir"
