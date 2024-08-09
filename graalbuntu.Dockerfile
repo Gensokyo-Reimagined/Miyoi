@@ -11,14 +11,14 @@ LABEL org.opencontainers.image.version="v0.0.1"
 
 # Install GraalVM
 RUN mkdir /usr/lib/jvm; \
-    wget "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-23.0.0-ea.17/graalvm-jdk-23.0.0-ea.17_linux-x64_bin.tar.gz"; \
+    wget "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-23.0.0-ea.21/graalvm-jdk-23.0.0-ea.21_linux-x64_bin.tar.gz"; \
     tar -zxC /usr/lib/jvm -f graalvm-jdk-23.0.0-ea.17_linux-x64_bin.tar.gz; \
-    rm -f graalvm-jdk-23.0.0-ea.17_linux-x64_bin.tar.gz
+    rm -f graalvm-jdk-23.0.0-ea.21_linux-x64_bin.tar.gz
 
 # Configure glibc and GraalVM
 
-ENV JAVA_HOME=/usr/lib/jvm/graalvm-jdk-23+26.1 \
-    PATH=/usr/lib/jvm/graalvm-jdk-23+26.1/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/graalvm-jdk-23+34.1 \
+    PATH=/usr/lib/jvm/graalvm-jdk-23+34.1/bin:$PATH
 
 # Yeet the Adoptium JDK
 RUN rm -rf /opt/java/openjdk
