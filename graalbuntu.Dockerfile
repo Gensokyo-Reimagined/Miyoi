@@ -5,13 +5,13 @@ RUN wget -nv -q -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/dow
     && unzip -q keepup.zip \
     && mv keepup-shadow-${KEEPUP_VERSION}/ keepup
 FROM itzg/minecraft-server:java21 as graalbuntu
-LABEL org.opencontainers.image.authors="Offz <offz@mineinabyss.com>; DoggySazHi <reimu@williamle.com>"
+LABEL org.opencontainers.image.authors="Offz <offz@mineinabyss.com>; DoggySazHi <reimu@williamle.com>; yumio <csaila@live.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
 # Install GraalVM
 RUN mkdir /usr/lib/jvm; \
-    wget "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-24.0.0-ea.13/graalvm-jdk-24.0.0-ea.13_linux-x64_bin.tar.gz"; \
-    tar -zxC /usr/lib/jvm -f graalvm-jdk-24.0.0-ea.13_linux-x64_bin.tar.gz; \
-    rm -f graalvm-jdk-24.0.0-ea.13_linux-x64_bin.tar.gz
+    wget "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-24.0.0-ea.16/graalvm-jdk-24.0.0-ea.16_linux-x64_bin.tar.gz"; \
+    tar -zxC /usr/lib/jvm -f graalvm-jdk-24.0.0-ea.16_linux-x64_bin.tar.gz; \
+    rm -f graalvm-jdk-24.0.0-ea.16_linux-x64_bin.tar.gz
 # Configure glibc and GraalVM
 ENV JAVA_HOME=/usr/lib/jvm/graalvm-jdk-24+14.1 \
     PATH=/usr/lib/jvm/graalvm-jdk-24+14.1/bin:$PATH
