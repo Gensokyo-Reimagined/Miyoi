@@ -1,9 +1,9 @@
 FROM alpine AS helper
-ARG KEEPUP_VERSION='3.0.0-alpha.3'
-RUN wget -nv -q -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-shadow-${KEEPUP_VERSION}.zip  \
+ARG KEEPUP_VERSION='3.1.1'
+RUN wget -nv -q -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-${KEEPUP_VERSION}.zip  \
     # unzip file inside hocon-to-json.zip into /usr/local \
     && unzip -q keepup.zip \
-    && mv keepup-shadow-${KEEPUP_VERSION}/ keepup
+    && mv keepup-${KEEPUP_VERSION}/ keepup
 
 FROM itzg/minecraft-server:java21-graalvm AS minecraft
 LABEL org.opencontainers.image.authors="yumio <csaila@live.com>; DoggySazHi <reimu@williamle.com>"
