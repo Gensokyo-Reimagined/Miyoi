@@ -19,7 +19,7 @@ if [ "$KEEPUP" = "true" ]; then
     export KEEPUP_JSON_PATH=gensokyoreimagined.servers.${SERVER_NAME}
   fi
 
-  keepup plugins $pluginVersionsFile $keepupDownloadsDir $pluginsDir --hide-progress-bar \
+  keepup plugins --hide-progress-bar $pluginVersionsFile $keepupDownloadsDir $pluginsDir \
     config --source $configSource --dest /data --inventory $keepupDir/keepup-configs.yml --template-cache $keepupDir/templates ${SERVER_NAME}
 else
   echo "KEEPUP is not set to 'true', not running keepup"
