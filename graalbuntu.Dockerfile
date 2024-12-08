@@ -1,9 +1,9 @@
 FROM alpine as helper
-ARG KEEPUP_VERSION='3.0.0-alpha.3'
-RUN wget -nv -q -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-shadow-${KEEPUP_VERSION}.zip  \
+ARG KEEPUP_VERSION='3.1.2'
+RUN wget -nv -q -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-${KEEPUP_VERSION}.zip  \
     # unzip file inside hocon-to-json.zip into /usr/local \
     && unzip -q keepup.zip \
-    && mv keepup-shadow-${KEEPUP_VERSION}/ keepup
+    && mv keepup-${KEEPUP_VERSION}/ keepup
 FROM itzg/minecraft-server:java21 as graalbuntu
 LABEL org.opencontainers.image.authors="Offz <offz@mineinabyss.com>; DoggySazHi <reimu@williamle.com>; yumio <csaila@live.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
@@ -25,7 +25,7 @@ RUN echo "Testing Java..." && java --version | grep GraalVM
 RUN apt update; \
     apt install -y software-properties-common; \
     add-apt-repository --yes --update ppa:ansible/ansible; \
-    apt install -y ansible rclone unzip jq openssh-client
+    apt install -y ansible rclone unzip jq file openssh-client
 COPY --from=helper /keepup /usr/local
 ENV\
     KEEPUP=true\

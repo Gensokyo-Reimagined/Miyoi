@@ -1,5 +1,5 @@
 FROM alpine AS helper
-ARG KEEPUP_VERSION='3.1.1'
+ARG KEEPUP_VERSION='3.1.2'
 RUN wget -nv -q -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-${KEEPUP_VERSION}.zip  \
     # unzip file inside hocon-to-json.zip into /usr/local \
     && unzip -q keepup.zip \
@@ -71,7 +71,7 @@ LABEL org.opencontainers.image.authors="yumio <csaila@live.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
 
 RUN apt-get update -y \
- && apt-get install -y rsync rclone wget unzip git pipx python3-venv jq
+ && apt-get install -y rsync rclone wget unzip git pipx python3-venv jq file
 
 RUN PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin pipx install --include-deps ansible
 
@@ -101,7 +101,7 @@ LABEL org.opencontainers.image.authors="yumio <csaila@live.com>"
 LABEL org.opencontainers.image.version="v1.0.0"
 
 RUN dnf reinstall glibc-common -yq
-RUN dnf install glibc-langpack-en glibc-locale-source rclone wget unzip jq python3-pip -yq
+RUN dnf install glibc-langpack-en glibc-locale-source rclone wget unzip jq attr file python3-pip -yq
 # ansible ansible-collection-community-general ansible-collection-ansible-posix might be out of date? Use pip
 # CHAT WE'RE INSTALLING RUST??
 
