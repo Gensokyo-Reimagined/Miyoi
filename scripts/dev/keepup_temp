@@ -4,7 +4,7 @@ set -e
 keepupDir=/server/keepupDir
 keepupDownloadsDir=$keepupDir/downloads
 keepupOverridesFile=$keepupDir/overrides.conf
-pluginsDir=/data/plugins
+pluginsDir=/server/plugins
 configSource=/server-config/
 pluginVersionsFile=/server-config/keepup/plugin-versions.conf
 
