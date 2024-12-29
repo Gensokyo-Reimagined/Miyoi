@@ -9,12 +9,12 @@ LABEL org.opencontainers.image.authors="Offz <offz@mineinabyss.com>; DoggySazHi 
 LABEL org.opencontainers.image.version="v0.0.1"
 # Install GraalVM
 RUN mkdir /usr/lib/jvm; \
-    wget "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-24.0.0-ea.16/graalvm-jdk-24.0.0-ea.16_linux-x64_bin.tar.gz"; \
-    tar -zxC /usr/lib/jvm -f graalvm-jdk-24.0.0-ea.16_linux-x64_bin.tar.gz; \
-    rm -f graalvm-jdk-24.0.0-ea.16_linux-x64_bin.tar.gz
+    wget "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-24.0.0-ea.25/graalvm-jdk-24.0.0-ea.25_linux-x64_bin.tar.gz"; \
+    tar -zxC /usr/lib/jvm -f graalvm-jdk-24.0.0-ea.25_linux-x64_bin.tar.gz; \
+    rm -f graalvm-jdk-24.0.0-ea.25_linux-x64_bin.tar.gz
 # Configure glibc and GraalVM
-ENV JAVA_HOME=/usr/lib/jvm/graalvm-jdk-24+18.1 \
-    PATH=/usr/lib/jvm/graalvm-jdk-24+18.1/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/graalvm-jdk-24+27.1 \
+    PATH=/usr/lib/jvm/graalvm-jdk-24+27.1/bin:$PATH
 # Yeet the Adoptium JDK
 RUN rm -rf /opt/java/openjdk
 ENV PATH $JAVA_HOME/bin:$PATH
