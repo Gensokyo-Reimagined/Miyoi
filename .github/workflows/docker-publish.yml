@@ -26,10 +26,6 @@ jobs:
             dockerfile: Dockerfile
             target: proxy
             platforms: linux/amd64
-          - image: momoyo
-            dockerfile: Dockerfile
-            target: momoyo
-            platforms: linux/amd64,linux/arm64
           - image: graalbuntu
             dockerfile: graalbuntu.Dockerfile
             target: graalbuntu
@@ -59,7 +55,7 @@ jobs:
           images: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}
 
       - name: Build and push ${{ matrix.image }}
-        uses: docker/build-push-action@v3
+        uses: useblacksmith/build-push-action@v1
         with:
           file: ${{ matrix.dockerfile }}
           platforms: ${{ matrix.platforms }}
