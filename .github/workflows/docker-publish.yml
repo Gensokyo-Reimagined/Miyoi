@@ -11,7 +11,7 @@ env:
 jobs:
   push:
     name: "Docker push for ${{ matrix.image }}"
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-8vcpu-ubuntu-2204
     permissions:
       contents: read
       packages: write
