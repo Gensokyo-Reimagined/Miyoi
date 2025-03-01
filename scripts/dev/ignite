@@ -54,7 +54,7 @@ if [[ "${USE_IGNITE_LOADER-}" == "true" ]]; then
     # Normalize on Spigot for later operations
     export FAMILY=SPIGOT
     # echo "configuring SERVER=${SERVER} VERSION=${VERSION} FAMILY=${FAMILY}"
-    export JVM_OPTS="${JVM_OPTS-} -Dignite.locator=paper -Dignite.paper.jar=leaf-1.21.3.jar -Dignite.paper.target=cn.dreeam.leaper.QuantumLeaper"
+    export JVM_OPTS="${JVM_OPTS-} -Dignite.locator=paper -Dignite.paper.jar=leaf-1.21.4.jar -Dignite.paper.target=cn.dreeam.leaper.QuantumLeaper"
     # echo "JVM_OPTS=${JVM_OPTS}"
     export TYPE="CUSTOM"
 fi
