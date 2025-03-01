@@ -13,7 +13,7 @@ RUN mkdir /usr/lib/jvm; \
     tar -zxC /usr/lib/jvm -f graalvm-jdk-24.0.0-ea.34_linux-x64_bin.tar.gz; \
     rm -f graalvm-jdk-24.0.0-ea.34_linux-x64_bin.tar.gz
 # Configure glibc and GraalVM
-ENV JAVA_HOME=/usr/lib/jvm/graalvm-jdk-24+33.1 \
+ENV JAVA_HOME=/usr/lib/jvm/graalvm-jdk-24+36.1 \
     PATH=/usr/lib/jvm/graalvm-jdk-24+36.1/bin:$PATH
 # Yeet the Adoptium JDK
 RUN rm -rf /opt/java/openjdk
