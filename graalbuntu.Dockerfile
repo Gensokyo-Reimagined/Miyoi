@@ -23,9 +23,11 @@ RUN echo "PATH = $PATH" && ls /usr/lib/jvm/ && ${JAVA_HOME}/bin/java -version
 RUN echo "Testing Java..." && java --version | grep GraalVM
 # Prepare Ansible and Keepup
 RUN apt update; \
-    apt install -y software-properties-common; \
+    apt-get install -y software-properties-common; \
     add-apt-repository --yes --update ppa:ansible/ansible; \
-    apt install -y ansible rclone unzip jq file openssh-client
+    apt-get install -y ansible rclone unzip jq file openssh-client
+# Needed for async profiler
+RUN apt-get install -y libstdc++6
 COPY --from=helper /keepup /usr/local
 ENV\
     KEEPUP=true\
