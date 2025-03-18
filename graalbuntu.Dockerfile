@@ -9,9 +9,9 @@ LABEL org.opencontainers.image.authors="Offz <offz@mineinabyss.com>; DoggySazHi 
 LABEL org.opencontainers.image.version="v0.0.1"
 # Install GraalVM
 RUN mkdir /usr/lib/jvm; \
-    wget "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-24.0.0-ea.34/graalvm-jdk-24.0.0-ea.34_linux-x64_bin.tar.gz"; \
-    tar -zxC /usr/lib/jvm -f graalvm-jdk-24.0.0-ea.34_linux-x64_bin.tar.gz; \
-    rm -f graalvm-jdk-24.0.0-ea.34_linux-x64_bin.tar.gz
+    wget "https://download.oracle.com/graalvm/24/latest/graalvm-jdk-24_linux-x64_bin.tar.gz"; \
+    tar -zxC /usr/lib/jvm -f graalvm-jdk-24_linux-x64_bin.tar.gz; \
+    rm -f graalvm-jdk-24_linux-x64_bin.tar.gz
 # Configure glibc and GraalVM
 ENV JAVA_HOME=/usr/lib/jvm/graalvm-jdk-24+36.1 \
     PATH=/usr/lib/jvm/graalvm-jdk-24+36.1/bin:$PATH
