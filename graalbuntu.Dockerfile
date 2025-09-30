@@ -1,4 +1,3 @@
-FROM 11notes/mimalloc:2.2.2 as mimalloc
 FROM alpine as helper
 ARG KEEPUP_VERSION='3.1.2'
 RUN wget -nv -q -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-${KEEPUP_VERSION}.zip  \
@@ -9,7 +8,20 @@ FROM itzg/minecraft-server:java21 as graalbuntu
 LABEL org.opencontainers.image.authors="Offz <offz@mineinabyss.com>; DoggySazHi <reimu@williamle.com>; yumio <csaila@live.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
 
-COPY --from=mimalloc /usr/lib/libmimalloc.so /usr/lib/
+# Needed for mimalloc
+
+
+RUN set -ex; \
+    apt-get update -y; \
+    apt-get install -y make cmake g++; \
+    cd /; \
+    git clone https://github.com/microsoft/mimalloc.git; \
+    cd mimalloc; \
+    mkdir build; \
+    cd build; \
+    cmake ..; \
+    make install;
+
 # Install GraalVM
 RUN mkdir /usr/lib/jvm; \
     wget "https://download.oracle.com/graalvm/25/latest/graalvm-jdk-25_linux-x64_bin.tar.gz"; \
@@ -25,8 +37,7 @@ RUN echo "PATH = $PATH" && ls /usr/lib/jvm/ && ${JAVA_HOME}/bin/java -version
 # Check if the "java" command points to GraalVM
 RUN echo "Testing Java..." && java --version | grep GraalVM
 # Prepare Ansible and Keepup
-RUN apt update; \
-    apt-get install -y software-properties-common; \
+RUN apt-get install -y software-properties-common; \
     add-apt-repository --yes --update ppa:ansible/ansible; \
     apt-get install -y ansible rclone unzip jq file openssh-client
 # Needed for async profiler
