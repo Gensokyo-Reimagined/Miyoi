@@ -35,7 +35,7 @@ RUN rm -rf /opt/java/openjdk
 ENV PATH $JAVA_HOME/bin:$PATH
 RUN echo "PATH = $PATH" && ls /usr/lib/jvm/ && ${JAVA_HOME}/bin/java -version
 # Check if the "java" command points to GraalVM
-RUN echo "Testing Java..." && java --version
+RUN echo "Testing Java..." && java --version | grep -i zulu
 # Prepare Ansible and Keepup
 RUN apt-get install -y software-properties-common; \
     add-apt-repository --yes --update ppa:ansible/ansible; \
