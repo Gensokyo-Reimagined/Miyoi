@@ -24,12 +24,12 @@ RUN set -ex; \
 
 # Install GraalVM
 RUN mkdir /usr/lib/jvm; \
-    wget "https://download.oracle.com/graalvm/25/latest/graalvm-jdk-25_linux-x64_bin.tar.gz"; \
-    tar -zxC /usr/lib/jvm -f graalvm-jdk-25_linux-x64_bin.tar.gz; \
-    rm -f graalvm-jdk-25_linux-x64_bin.tar.gz
+    wget "https://cdn.azul.com/zulu/bin/zulu25.28.85-ca-jdk25.0.0-linux_x64.tar.gz"; \
+    tar -zxC /usr/lib/jvm -f zulu25.28.85-ca-jdk25.0.0-linux_x64.tar.gz; \
+    rm -f zulu25.28.85-ca-jdk25.0.0-linux_x64.tar.gz
 # Configure glibc and GraalVM
-ENV JAVA_HOME=/usr/lib/jvm/graalvm-jdk-25+37.1 \
-    PATH=/usr/lib/jvm/graalvm-jdk-25+37.1/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/zulu25.28.85-ca-jdk25.0.0-linux_x64 \
+    PATH=/usr/lib/jvm/zulu25.28.85-ca-jdk25.0.0-linux_x64/bin:$PATH
 # Yeet the Adoptium JDK
 RUN rm -rf /opt/java/openjdk
 ENV PATH $JAVA_HOME/bin:$PATH
