@@ -55,7 +55,7 @@ jobs:
           images: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}
 
       - name: Build and push ${{ matrix.image }}
-        uses: useblacksmith/build-push-action@v1
+        uses: docker/build-push-action@v5
         with:
           file: ${{ matrix.dockerfile }}
           platforms: ${{ matrix.platforms }}
