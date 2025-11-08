@@ -85,5 +85,5 @@ RUN chmod +x /scripts/dev/*
 
 WORKDIR /server
 
-RUN cp /usr/bin/run-bungeecord.sh /start
+RUN cp /usr/bin/run-velocity.sh /start
 ENTRYPOINT ["/scripts/dev/workaround"]
