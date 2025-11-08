@@ -48,7 +48,7 @@ RUN mkdir -p ~/.config/rclone && \
 WORKDIR /data
 ENTRYPOINT ["/scripts/dev/entrypoint"]
 
-FROM itzg/bungeecord AS proxy
+FROM itzg/velocity AS proxy
 LABEL org.opencontainers.image.authors="yumio <csaila@live.com>"
 LABEL org.opencontainers.image.version="v0.0.1"
 
