@@ -48,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}
+          images: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}
 
       - name: Build ${{ matrix.image }} (do not push)
         uses: docker/build-push-action@v5
@@ -63,8 +63,8 @@ jobs:
       - name: Slim ${{ matrix.image }}
         uses: kitabisa/docker-slim-action@v1.2.0
         with:
-          target: ${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest 
-          tag: "slim"
+          target: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest 
+          tag: "slim" 
         env:
           DSLIM_HTTP_PROBE: "false"
 
