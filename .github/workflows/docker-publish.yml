@@ -59,3 +59,5 @@ jobs:
           target: ${{ matrix.target }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          provenance: false  # Reduces metadata overhead
+          squash: true       # Experimental but very effective (squashes all layers)
