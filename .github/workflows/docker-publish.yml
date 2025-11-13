@@ -50,12 +50,27 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}
 
-      - name: Build and push ${{ matrix.image }}
+      - name: Build ${{ matrix.image }} (do not push)
         uses: docker/build-push-action@v5
         with:
           file: ${{ matrix.dockerfile }}
           platforms: ${{ matrix.platforms }}
-          push: true
+          push: false
           target: ${{ matrix.target }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Slim ${{ matrix.image }}
+        uses: kitabisa/docker-slim-action@v1.2.0
+        with:
+          target: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest 
+          tag: "slim" 
+        env:
+          DSLIM_HTTP_PROBE: "false"
+
+      - name: Push Slimmed Image
+        run: |
+          # Push the new, smaller image
+          docker push "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest.slim"
+          docker tag "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest.slim" "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest"
+          docker push "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest"
