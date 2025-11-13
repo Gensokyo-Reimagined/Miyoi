@@ -71,6 +71,6 @@ jobs:
       - name: Push Slimmed Image
         run: |
           # Push the new, smaller image
-          docker push "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest.slim"
-          docker tag "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest.slim" "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest"
-          docker push "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest"
+          docker push "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest.slim"
+          docker tag "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest.slim" "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest"
+          docker push "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest"
