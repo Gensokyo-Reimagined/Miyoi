@@ -48,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}
+          images: ${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}
 
       - name: Build ${{ matrix.image }} (do not push)
         uses: docker/build-push-action@v5
@@ -63,15 +63,14 @@ jobs:
       - name: Slim ${{ matrix.image }}
         uses: kitabisa/docker-slim-action@v1.2.0
         with:
-          target: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest 
-          tag: "slim" 
-          pull: false
+          target: ${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest 
+          tag: "slim"
         env:
           DSLIM_HTTP_PROBE: "false"
 
       - name: Push Slimmed Image
         run: |
           # Push the new, smaller image
-          docker push "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest.slim"
-          docker tag "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest.slim" "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest"
-          docker push "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest"
+          docker push "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest.slim"
+          docker tag "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest.slim" "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest"
+          docker push "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest"
