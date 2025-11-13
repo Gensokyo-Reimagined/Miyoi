@@ -26,10 +26,6 @@ jobs:
             dockerfile: Dockerfile
             target: proxy
             platforms: linux/amd64
-          - image: graalbuntu
-            dockerfile: graalbuntu.Dockerfile
-            target: graalbuntu
-            platforms: linux/amd64
     steps:
       - uses: actions/checkout@v3
 
