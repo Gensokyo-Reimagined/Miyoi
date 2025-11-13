@@ -48,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}
+          images: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}
 
       - name: Build ${{ matrix.image }} (do not push)
         uses: docker/build-push-action@v5
@@ -59,42 +59,17 @@ jobs:
           target: ${{ matrix.target }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          provenance: false
-
-      - name: Install Docker Slim
-        run: |
-          echo "Fetching latest docker-slim release..."
-          LATEST_VERSION=$(curl -s "https://api.github.com/repos/slimtoolkit/slim/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-          
-          if [ -z "$LATEST_VERSION" ]; then
-            echo "Failed to fetch latest docker-slim version."
-            exit 1
-          fi
-          
-          echo "Downloading docker-slim version ${LATEST_VERSION}..."
-          curl -sL -o slim.tar.gz "https://github.com/slimtoolkit/slim/releases/download/${LATEST_VERSION}/dist_linux.tar.gz"
-          # Extract just the main binary
-          tar -xzf slim.tar.gz dist_linux/docker-slim
-          sudo mv dist_linux/docker-slim /usr/local/bin/docker-slim
-          sudo chmod +x /usr/local/bin/docker-slim
-
-          rm slim.tar.gz
-          rm -r dist_linux
-          
-          echo "docker-slim installed:"
-          docker-slim --version
 
       - name: Slim ${{ matrix.image }}
-        run: |
-          docker-slim build \
-            --target ${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest \
-            --tag ${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest.slim \
-            --pull=false \
-            --http-probe=false
+        uses: docker-slim/docker-slim-action@v1.11.0
+        with:
+          target_reference: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest
+          pull: false
+          http_probe: false
 
       - name: Push Slimmed Image
         run: |
-          docker push "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest.slim"
-          
-          docker tag "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest.slim" "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest"
-          docker push "${{ env.REGISTRY }}/gensokyo-reimagined/${{ matrix.image }}:latest"
+          # Push the new, smaller image
+          docker push "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest.slim"
+          docker tag "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest.slim" "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest"
+          docker push "${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest"
