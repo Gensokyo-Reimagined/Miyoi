@@ -73,18 +73,11 @@ jobs:
           
           echo "Downloading docker-slim version ${LATEST_VERSION}..."
           curl -sL -o slim.tar.gz "https://github.com/slimtoolkit/slim/releases/download/${LATEST_VERSION}/dist_linux.tar.gz"
-          
-          echo "Extracting binary..."
+          # Extract just the main binary
           tar -xzf slim.tar.gz dist_linux/docker-slim
-          
-          echo "Removing old/dangling symlink if it exists..."
-          sudo rm -f /usr/local/bin/docker-slim
-          
-          echo "Installing new binary..."
           sudo mv dist_linux/docker-slim /usr/local/bin/docker-slim
           sudo chmod +x /usr/local/bin/docker-slim
-          
-          echo "Cleaning up..."
+
           rm slim.tar.gz
           rm -r dist_linux
           
