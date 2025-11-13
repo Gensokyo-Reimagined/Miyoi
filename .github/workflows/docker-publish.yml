@@ -56,6 +56,7 @@ jobs:
           file: ${{ matrix.dockerfile }}
           platforms: ${{ matrix.platforms }}
           push: false
+          load: true
           target: ${{ matrix.target }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
