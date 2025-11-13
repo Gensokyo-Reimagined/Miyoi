@@ -61,13 +61,11 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Slim ${{ matrix.image }}
-        uses: kitabisa/docker-slim-action@v1.2.0
+        uses: docker-slim/docker-slim-action@v1.11.0
         with:
-          target: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest 
-          tag: "slim" 
+          target_reference: ${{ env.REGISTRY }}/Gensokyo-Reimagined/${{ matrix.image }}:latest
           pull: false
-        env:
-          DSLIM_HTTP_PROBE: "false"
+          http_probe: false
 
       - name: Push Slimmed Image
         run: |
