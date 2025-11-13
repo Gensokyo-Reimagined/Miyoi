@@ -74,11 +74,10 @@ jobs:
           echo "Downloading docker-slim version ${LATEST_VERSION}..."
           curl -sL -o slim.tar.gz "https://github.com/slimtoolkit/slim/releases/download/${LATEST_VERSION}/dist_linux.tar.gz"
           
-          echo "Extracting archive..."
-          tar -xzf slim.tar.gz
+          echo "Extracting binary..."
+          tar -xzf slim.tar.gz dist_linux/docker-slim
           
           echo "Installing binary to /usr/local/bin..."
-          # Now this command will find the file, as it exists at 'dist_linux/docker-slim'
           sudo install -m 0755 dist_linux/docker-slim /usr/local/bin/docker-slim
           
           echo "Cleaning up..."
