@@ -1,6 +1,5 @@
 #!/bin/sh
 set -e
-export ANSIBLE_STDOUT_CALLBACK=yaml
 
 if [ "$ANSIBLE" = "true" ]; then
   if [ "$ANSIBLE_PULL" = "true" ]; then
