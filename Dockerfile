@@ -45,13 +45,13 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/lib/jvm && \
-    wget -q "https://cdn.azul.com/zulu/bin/zulu26.0.27-beta-jdk26.0.0-beta.20-linux_x64.tar.gz" && \
-    tar -zxC /usr/lib/jvm -f zulu26.0.27-beta-jdk26.0.0-beta.20-linux_x64.tar.gz && \
-    rm -f zulu26.0.27-beta-jdk26.0.0-beta.20-linux_x64.tar.gz && \
+    wget -q "https://cdn.azul.com/zulu/bin/zulu25.28.85-ca-jdk25.0.0-linux_x64.tar.gz" && \
+    tar -zxC /usr/lib/jvm -f zulu25.28.85-ca-jdk25.0.0-linux_x64.tar.gz && \
+    rm -f zulu25.28.85-ca-jdk25.0.0-linux_x64.tar.gz && \
     rm -rf /opt/java/openjdk
 
-ENV JAVA_HOME=/usr/lib/jvm/zulu26.0.27-beta-jdk26.0.0-beta.20-linux_x64 \
-    PATH=/usr/lib/jvm/zulu26.0.27-beta-jdk26.0.0-beta.20-linux_x64/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/zulu25.28.85-ca-jdk25.0.0-linux_x64 \
+    PATH=/usr/lib/jvm/zulu25.28.85-ca-jdk25.0.0-linux_x64/bin:$PATH
 
 RUN java --version | grep -i zulu
 
