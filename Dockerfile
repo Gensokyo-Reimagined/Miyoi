@@ -45,13 +45,13 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/lib/jvm && \
-    wget -q "https://download.java.net/java/early_access/jdk27/9/GPL/openjdk-27-ea+9_linux-x64_bin.tar.gz" && \
-    tar -zxC /usr/lib/jvm -f openjdk-27-ea+9_linux-x64_bin.tar.gz && \
-    rm -f openjdk-27-ea+9_linux-x64_bin.tar.gz && \
+    wget -q "https://download.java.net/java/GA/jdk26/c3cc523845074aa0af4f5e1e1ed4151d/35/GPL/openjdk-26_linux-x64_bin.tar.gz" && \
+    tar -zxC /usr/lib/jvm -f openjdk-26_linux-x64_bin && \
+    rm -f openjdk-26_linux-x64_bin && \
     rm -rf /opt/java/openjdk
 
-ENV JAVA_HOME=/usr/lib/jvm/jdk-27 \
-    PATH=/usr/lib/jvm/jdk-27/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/jdk-26 \
+    PATH=/usr/lib/jvm/jdk-26/bin:$PATH
 
 RUN java --version
 
