@@ -45,13 +45,13 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/lib/jvm && \
-    wget -q "https://cdn.azul.com/zulu/bin/zulu25.30.17-ca-jdk25.0.1-linux_x64.tar.gz" && \
-    tar -zxC /usr/lib/jvm -f zulu25.30.17-ca-jdk25.0.1-linux_x64.tar.gz && \
-    rm -f zulu25.30.17-ca-jdk25.0.1-linux_x64.tar.gz && \
+    wget -q "https://download.java.net/java/early_access/jdk27/9/GPL/openjdk-27-ea+9_linux-x64_bin.tar.gz" && \
+    tar -zxC /usr/lib/jvm -f openjdk-27-ea+9_linux-x64_bin.tar.gz && \
+    rm -f openjdk-27-ea+9_linux-x64_bin.tar.gz && \
     rm -rf /opt/java/openjdk
 
-ENV JAVA_HOME=/usr/lib/jvm/zulu25.30.17-ca-jdk25.0.1-linux_x64 \
-    PATH=/usr/lib/jvm/zulu25.30.17-ca-jdk25.0.1-linux_x64/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/jdk-27 \
+    PATH=/usr/lib/jvm/jdk-27/bin:$PATH
 
 RUN java --version | grep -i zulu
 
