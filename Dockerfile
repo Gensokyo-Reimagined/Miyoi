@@ -53,7 +53,7 @@ RUN mkdir -p /usr/lib/jvm && \
 ENV JAVA_HOME=/usr/lib/jvm/jdk-27 \
     PATH=/usr/lib/jvm/jdk-27/bin:$PATH
 
-RUN java --version | grep -i zulu
+RUN java --version
 
 ENV KEEPUP=true \
     KEEPUP_ALLOW_OVERRIDES=true \
