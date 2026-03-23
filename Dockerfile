@@ -45,13 +45,13 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/lib/jvm && \
-    wget -q "https://download.java.net/java/GA/jdk26/c3cc523845074aa0af4f5e1e1ed4151d/35/GPL/openjdk-26_linux-x64_bin.tar.gz" && \
-    tar -zxC /usr/lib/jvm -f openjdk-26_linux-x64_bin.tar.gz && \
-    rm -f openjdk-26_linux-x64_bin.tar.gz && \
-    rm -rf /opt/java/openjdk
+    wget -q "https://cdn.azul.com/zulu/bin/zulu26.28.59-ca-jdk26.0.0-linux_x64.tar.gz" && \
+    tar -zxC /usr/lib/jvm -f zulu26.28.59-ca-jdk26.0.0-linux_x64.tar.gz && \
+    rm -f zulu26.28.59-ca-jdk26.0.0-linux_x64.tar.gz && \
+    rm -rf /opt/java/zulu
 
-ENV JAVA_HOME=/usr/lib/jvm/jdk-26 \
-    PATH=/usr/lib/jvm/jdk-26/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/zulu26.28.59-ca-jdk26.0.0-linux_x64 \
+    PATH=/usr/lib/jvm/zulu26.28.59-ca-jdk26.0.0-linux_x64/bin:$PATH
 
 RUN java --version
 
