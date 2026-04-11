@@ -1,5 +1,5 @@
 FROM alpine AS helper
-ARG KEEPUP_VERSION='3.1.2'
+ARG KEEPUP_VERSION='3.2.0-alpha.5'
 RUN wget -nv -q -O keepup.zip https://github.com/MineInAbyss/Keepup/releases/download/v${KEEPUP_VERSION}/keepup-${KEEPUP_VERSION}.zip \
     && unzip -q keepup.zip \
     && mv keepup-${KEEPUP_VERSION}/ keepup
