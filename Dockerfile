@@ -95,6 +95,17 @@ RUN apt-get update -y && \
 
 COPY --from=helper /keepup /usr/local
 
+RUN mkdir -p /usr/lib/jvm && \
+    wget -q "https://cdn.azul.com/zulu/bin/zulu26.30.11-ca-jdk26.0.1-linux_x64.tar.gz" && \
+    tar -zxC /usr/lib/jvm -f zulu26.30.11-ca-jdk26.0.1-linux_x64.tar.gz && \
+    rm -f zulu26.30.11-ca-jdk26.0.1-linux_x64.tar.gz && \
+    rm -rf /opt/java/openjdk
+
+ENV JAVA_HOME=/usr/lib/jvm/zulu26.30.11-ca-jdk26.0.1-linux_x64 \
+    PATH=/usr/lib/jvm/zulu26.30.11-ca-jdk26.0.1-linux_x64/bin:$PATH
+
+RUN java --version
+
 ENV\
     KEEPUP=true\
     KEEPUP_ALLOW_OVERRIDES=true\
