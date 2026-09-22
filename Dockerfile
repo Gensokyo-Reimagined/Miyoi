@@ -45,13 +45,13 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/lib/jvm && \
-    wget -q "https://cdn.azul.com/zulu/bin/zulu26.30.11-ca-jdk26.0.1-linux_x64.tar.gz" && \
-    tar -zxC /usr/lib/jvm -f zulu26.30.11-ca-jdk26.0.1-linux_x64.tar.gz && \
-    rm -f zulu26.30.11-ca-jdk26.0.1-linux_x64.tar.gz && \
+    wget -q "https://download.java.net/java/GA/jdk27/55ce5470a6294008af0057ff4626d0e5/35/GPL/openjdk-27_linux-x64_bin.tar.gz" && \
+    tar -zxC /usr/lib/jvm -f openjdk-27_linux-x64_bin.tar.gz && \
+    rm -f openjdk-27_linux-x64_bin.tar.gz && \
     rm -rf /opt/java/zulu
 
-ENV JAVA_HOME=/usr/lib/jvm/zulu26.30.11-ca-jdk26.0.1-linux_x64 \
-    PATH=/usr/lib/jvm/zulu26.30.11-ca-jdk26.0.1-linux_x64/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/jdk-27 \
+    PATH=/usr/lib/jvm/jdk-27/bin:$PATH
 
 RUN java --version
 
@@ -96,13 +96,13 @@ RUN apt-get update -y && \
 COPY --from=helper /keepup /usr/local
 
 RUN mkdir -p /usr/lib/jvm && \
-    wget -q "https://cdn.azul.com/zulu/bin/zulu26.30.11-ca-jdk26.0.1-linux_x64.tar.gz" && \
-    tar -zxC /usr/lib/jvm -f zulu26.30.11-ca-jdk26.0.1-linux_x64.tar.gz && \
-    rm -f zulu26.30.11-ca-jdk26.0.1-linux_x64.tar.gz && \
+    wget -q "https://download.java.net/java/GA/jdk27/55ce5470a6294008af0057ff4626d0e5/35/GPL/openjdk-27_linux-x64_bin.tar.gz" && \
+    tar -zxC /usr/lib/jvm -f openjdk-27_linux-x64_bin.tar.gz && \
+    rm -f openjdk-27_linux-x64_bin.tar.gz && \
     rm -rf /opt/java/openjdk
 
-ENV JAVA_HOME=/usr/lib/jvm/zulu26.30.11-ca-jdk26.0.1-linux_x64 \
-    PATH=/usr/lib/jvm/zulu26.30.11-ca-jdk26.0.1-linux_x64/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/jdk-27 \
+    PATH=/usr/lib/jvm/jdk-27/bin:$PATH
 
 RUN java --version
 
